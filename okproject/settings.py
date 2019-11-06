@@ -25,7 +25,7 @@ SECRET_KEY = 'fds97+d(#3*t=zby_l3#2p8-fw1wx$scss_ye7e!j6$c6n7zg3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.1.76", "10.65.150.89"]
+ALLOWED_HOSTS = ["belayakartina.herokuapp.com"]
 
 
 # Application definition
