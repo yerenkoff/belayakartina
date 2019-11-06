@@ -1,0 +1,88 @@
+	<h2 style="font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Заказ на сумму: {{ summary }} руб.</h2>
+	<h2 style="font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Телефон: {{ phone }}</h2>
+	<h2 style="font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">E-mail: {{ orderEmail }}</h2>
+	<h2 style="font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Адрес доставки: {{ shippingAdress }}</h2>
+	<h2 style="font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Стоимость доставки: {{ shippingPrice }} руб.</h2>
+	<h2 style="font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;
+	text-align: center;
+	margin: 20px auto;">Товары</h2>
+	<div style="clear: both;
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;">
+		<h3 style="float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Наименование</h3>
+		<h3 style="float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Количество</h3>
+		<h3 style="float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Цена</h3>
+		<h3 style="float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">Стоимость</h3>
+	</div>
+	{% for i, cost in orderData %}
+	<div style="clear: both;
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+	box-sizing: border-box;">
+	<h3 style="font-size: 1em; float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">{{ i.1 }}</h3>
+	<h3 style="font-size: 1em; float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">{{ i.3 }}</h3>
+	<h3 style="font-size: 1em; float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">{{ i.2 }} руб.</h3>
+	<h3 style="font-size: 1em; float: left;
+	padding: 0 5px;
+	text-align: center;
+	width: calc((100% - 40px) / 4);
+	font-family: 'Roboto', sans;
+	font-weight: 300;
+	color: #222;">{{ cost }} руб.</h3>
+</div>
+{% endfor %}

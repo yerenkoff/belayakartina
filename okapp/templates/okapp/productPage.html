@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }} | БЕЛАЯ КАРТИНА</title>
+    <link rel="stylesheet" href="{% static 'okapp/productPage.css' %}">
+    <link rel="stylesheet" href="{% static 'okapp/common.css' %}">
+    <link rel="icon" sizes="64x64" href="{% static 'okapp/img/favicon.png' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:300,400,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
+    rel="stylesheet">
+</head>
+<body>
+    <div id="notification">Товар добавлен в корзину</div>
+    <header>
+        <div class="container">
+            <a href="#/" class="hamburger" onclick="toggleNav(this)"><img src="{% static 'okapp/img/menu.svg' %}" alt=""></a>
+            <a href="/" class="logo">
+                <h2 id="head">БЕЛАЯ КАРТИНА</h2>
+                <p>Товары для дома и рукоделия</p>
+            </a>
+            <div class="mobile__bag">
+                <a href="#/" class="basket" onclick="toggleDrop(this)"><img src="{% static 'okapp/img/basket3.svg' %}" alt=""><span></span><div class="basketCounter"></div></a>
+                <div class="bag">
+                    <h3 class="bag__name">Ваша корзина</h3>
+                    <div class="bag__items">
+                    </div>
+                    <a href="#/" class="bag__item">
+                        <h5>Подытог</h5>
+                        <div class="bag__price total_price"></div>
+                    </a href="#/">
+                    <a href="/order" class="bag__link">Перейти в корзину</a>
+                </div>
+            </div>
+            <nav class="navigationBar">
+                {% for item in items %}
+                <section>
+                    <div class="item" onclick="toggleDrop(this)">{{ item.category }}<span></span></div>
+                    <div class="section__nav">
+                        <a href="{% url 'feed' item.category 'Все товары' %}" class="product">Все товары</a>
+                        {% for product in categories %}
+                        {% if product.parent == item.category %}
+                        <a href="{% url 'feed' item.category product.category %}" class="product">{{ product.category }}</a>
+                        <div class="product__nav" data-product-nav="drop">
+                            {% for subproduct in categories %}
+                            {% if subproduct.parent == product.category %}
+                            <a href="{% url 'feed' item.category subproduct.category %}" class="subProduct">{{ subproduct.category }}</a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
+                <section class="tools searchSection">
+                    <a href="#/" class="searchIcon" onclick="toggleDrop(this)"><img src="{% static 'okapp/img/search.svg' %}" alt=""><img style="opacity: 0;" src="{% static 'okapp/img/close.svg' %}" alt=""><span></span></a>
+                    <form action="" type="post" class="modalSearch searchForm">
+                        <input class="searchForm_input modalSearch" type="text" placeholder="Введите название товара">
+                        <button id="doSearch" class="modalSearch" onclick="console.log('CLicked');">
+                            <a href="#/" class="modalSearch_button"><img src="{% static 'okapp/img/search.svg' %}" alt=""></a>
+                        </button>
+                        <div class="tools_answers">
+                            <!-- <button type="submit" class="answers_input">"Весенний сад"<span> - Вышивка, Panna</span></button> -->
+                        </div>
+                    </form>
+                </section>
+                <section class="tools desktop__bag">
+                    <a href="#/" class="basket" onclick="toggleDrop(this)"><img src="{% static 'okapp/img/basket3.svg' %}" alt=""><span></span><div class="basketCounter"></div></a>
+                    <div class="bag">
+                        <h3 class="bag__name">Ваша корзина</h3>
+                        <div class="bag__items">
+                        </div>
+                        <a href="#/" class="bag__item">
+                            <h5>Подытог</h5>
+                            <div class="bag__price total_price"></div>
+                        </a href="#/">
+                        <a href="/order" class="bag__link">Перейти в корзину</a>
+                    </div>
+                </section>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section>
+                <img class="product__image" src="{{ product.photo.url }}" alt="">
+                <aside>
+                    <h1>{{ product.name }}</h1>
+                    <a href="#/" id="productCategory" class="productCategory">{{ product.category }}</a>
+                    <h5>В наличии(шт.): <span>{{ product.amount }}</span></h5>
+                    <h5>Цена(руб.): <span>{{ product.price }}</span></h5>
+                    <p class="asidePara">{{ product.description }}</p>
+                    <p class="aboutShipping">Вы можете ознакомиться с положениями <a href="#/">доставки</a>.</p>
+                    <form action="#/">
+                        <input type="submit" data-tobag="{{ product.id }}" class="toBag" value="В корзину">
+                    </form>
+                </aside>
+            </section>
+            <a href="#/" class="toLeft" data-button-value="1" onclick="sliderMove(this.dataset.buttonValue)">〈 &nbsp;</a>
+            <a href="#/" class="toRight" data-button-value="-1" onclick="sliderMove(this.dataset.buttonValue)">&nbsp; 〉</a>
+            <h2 class="interestingProductsHeader">Товары, которые могут Вас заинтересовать</h2>
+            <div class="slider">
+                {% for item in products %}
+                <form class="sliderForm" action="{% url 'product' item.id %}" onclick="this.submit()" style="background-image: url({{ item.photo.url }});">
+                    <h2>{{ item.name }}</h2>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="social">
+                <a href="#/"><img src="{% static 'okapp/img/ig.png' %}" title="Instagram" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/tg.png' %}" title="Telegram" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/vb.png' %}" title="Viber" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/vk.png' %}" title="VK" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/wa.png' %}" title="WhatsApp" alt=""></a>
+            </div>
+            <div class="contacts">
+                <a href="tel:8 905 831 40 67" title="Позвонить">
+                    <img src="{% static 'okapp/img/phone.png' %}" alt="">
+                    <h5>8 905 831 40 67</h5>
+                </a>
+                <a href="mailto:belayakartina@yandex.com" title="Написать">
+                    <img src="{% static 'okapp/img/email.svg' %}" alt="">
+                    <h5>belayakartina@yandex.com</h5>
+                </a>
+            </div>
+            <a href="/" class="logo">БЕЛАЯ КАРТИНА</a>
+            <section>
+                <a href="#/">Доставка</a>
+                <a href="#/">Помощь</a>
+            </section>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      var token = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'okapp/script.js' %}"></script>
+    <script>
+        function resizeAsidePara() {
+            if (window.matchMedia("(min-width: 768.5px)").matches) {
+                document.getElementsByClassName("asidePara")[0].style.height = parseInt(window.getComputedStyle(document.getElementsByClassName("product__image")[0]).getPropertyValue('height'), 10) - 227 - parseInt(window.getComputedStyle(document.getElementById("productCategory")).getPropertyValue('height'), 10) + "px";
+            }           
+        }
+        function addSliderArrows() {            
+            if (window.matchMedia("(max-width: 768.5px)").matches) {
+                document.getElementsByClassName("toLeft")[0].style.left = document.getElementsByClassName("slider")[0].getBoundingClientRect().left + 5 + "px";
+                document.getElementsByClassName("toRight")[0].style.right = document.getElementsByClassName("slider")[0].getBoundingClientRect().left + 5 + "px";
+            } else {
+                document.getElementsByClassName("toLeft")[0].style.top = document.getElementsByClassName("slider")[0].offsetTop + 115 + "px";
+                document.getElementsByClassName("toRight")[0].style.top = document.getElementsByClassName("slider")[0].offsetTop + 115 + "px";
+                document.getElementsByClassName("toLeft")[0].style.left = document.getElementsByClassName("slider")[0].getBoundingClientRect().left - 25 + "px";
+                document.getElementsByClassName("toRight")[0].style.right = document.getElementsByClassName("slider")[0].getBoundingClientRect().left - 25 + "px";
+            }
+        }
+        addSliderArrows();
+        resizeAsidePara();
+        window.onresize = function() {
+            addSliderArrows();
+            resizeAsidePara();
+            console.log(11);
+        }
+        addToBag({{ bagProducts|safe }});
+
+        window.onload = function() {
+            [].forEach.call(document.getElementsByClassName("productCategory"), function(p) {
+                p.innerHTML = JSON.parse(p.innerHTML).join(", ");
+            });
+            basketCounter();
+        };
+    </script>
+</body>
+</html>

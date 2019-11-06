@@ -1,0 +1,352 @@
+$sans: 'Roboto', sans-serif
+$serif: 'Playfair Display', serif
+$grey: #444
+$black: #222
+$thin: 300
+$bold: 700
+$greyline: #ccc
+*
+	margin: 0
+	padding: 0
+	-webkit-tap-highlight-color: transparent
+a
+	color: $grey
+	text-decoration: none
+body
+	&::-webkit-scrollbar
+		width: 0
+li
+	list-style: none
+	font-family: $sans
+	font-size: 1rem
+	font-weight: $thin
+	color: $black
+li>ul
+	padding-left: 40px
+h1
+	font-family: $serif
+	font-size: 2em
+	font-weight: $bold
+	color: $black
+h2
+	font-family: $serif
+	font-size: 1.5em
+	font-weight: $bold
+	color: $black
+h3
+	font-family: $sans
+	font-size: 1em
+	font-weight: $thin
+	color: $black
+h5
+	font-family: $sans
+	font-size: 0.9em
+	font-weight: $thin
+	color: $black
+input
+	font-family: $sans
+	font-size: 1em
+	font-weight: $thin
+	color: $black
+	outline: none
+textarea
+	width: 100%
+	box-sizing: border-box
+	outline: none
+	padding: 0 5px
+	resize: none
+	font-family: $sans
+	font-size: 1em
+	font-weight: $thin
+	color: $black
+	display: block
+	border: 1px solid $greyline
+	border-radius: 3px
+input[type="text"]
+	padding: 0 5px
+	margin-bottom: 5px
+	border: 1px solid $greyline
+	border-radius: 3px
+	display: block
+	width: calc(100% - 37px)
+	box-sizing: border-box
+	line-height: 30px
+	// float: left
+input[type="submit"]
+	line-height: 30px
+	border: 1px solid $greyline
+	border-radius: 3px
+	display: block
+	width: 200px
+	background: none
+	margin: 10px auto 0
+	cursor: pointer
+	transition: .3s
+	&:hover
+		border: 1px solid #000
+		color: #000
+	// float: left
+.categories
+	clear: both
+	// overflow: hidden
+	float: left
+	width: 100%
+	margin: 10px 0
+	h3
+		margin-bottom: 5px
+	nav
+		.category
+			float: left
+			// background: #4cc
+			// border-radius: 50%
+			margin-right: 5px
+			margin-bottom: 5px
+			position: relative
+			input
+				position: absolute
+				background: #4cc
+				border: 30px solid #4cc
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				&::after
+					width: 100%
+					height: 100%
+					line-height: 30px
+					position: absolute
+					top: 0
+					left: 0
+					box-sizing: border-box
+					border: 1px solid $greyline
+					border-radius: 3px
+					content: attr(data-value)
+					font-size: 0.9rem
+					background: #fff
+					outline: none
+					text-align: center
+					// background: #c99
+				&:checked::after
+					border: 1px solid $black
+			h5
+				line-height: 30px
+				// background-color: #c14
+				// background: $greyline
+				padding: 0 10px
+main
+	background: #f5f5f5
+	.container
+		max-width: 1000px
+		padding: 0 10px
+		margin: auto
+		h1
+			line-height: 100px
+			width: calc(100% - 100px)
+			float: left
+		.logout
+			font-family: $sans
+			font-size: 1em
+			font-weight: $thin
+			color: $black
+			width: 100px
+			text-align: center
+			line-height: 100px
+			float: left
+		.addProduct
+			overflow-x: hidden
+			background: #fff
+			float: left
+			padding: 10px
+			border-radius: 3px
+			box-sizing: border-box
+			width: calc((100% - 10px) / 2)
+			margin-right: 5px
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.2)
+			h2
+				margin-bottom: 10px
+			.name
+				float: left
+			.photo
+				float: left
+				// background: #c55
+				border-radius: 3px
+				border: 1px solid $greyline
+				width: 30px
+				height: 30px
+				margin-left: 5px
+				position: relative
+				// box-sizing: border-box
+				input
+					position: absolute
+					width: 100%
+					height: 100%
+					top: 0
+					left: 0
+					background: rgba(134, 45, 255, 0.5)
+					opacity: 0
+				i
+					width: 100%
+					height: 100%
+					display: flex
+					justify-content: center
+					align-items: center
+					position: absolute
+					top: 0
+					left: 0
+					// background-color: #c14
+			#target
+				max-width: 50%
+				margin: auto
+				display: block
+				clear: both
+				padding: 5px
+				box-sizing: border-box
+				border: 1px solid $greyline
+				border-radius: 3px
+				display: none
+			.amount
+				width: 100%
+		.addCategory
+			overflow-x: hidden
+			background: #fff
+			width: calc((100% - 10px) / 2)
+			padding: 10px
+			float: left
+			border-radius: 3px
+			margin-left: 5px
+			box-sizing: border-box
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.2)
+			h2
+				margin-bottom: 10px
+			ul
+				li
+					// background: #eee
+					display: flex
+					align-items: center
+					line-height: 30px
+					form
+						height: 30px
+						display: inline-block
+						margin-left: 2px
+						cursor: pointer	
+						i
+							line-height: 30px
+				.catAddingForm
+					padding: 10px 0
+					// overflow: hidden
+					// background: #4cc
+					box-sizing: border-box
+					height: 100px
+					input:first-child
+						// background: #3ba
+						line-height: 30px
+						box-sizing: border-box
+						font-size: 0.9rem
+						width: 200px
+					input:nth-child(2)
+						width: 100%
+						font-size: 1rem
+						margin: 10px 0
+						line-height: 30px
+						box-sizing: border-box
+						width: 200px
+		.products
+			clear: both
+			margin-top: 20px
+			h2
+				text-align: center
+				margin-top: 20px
+				width: 100%
+				display: inline-block
+			.product
+				// background: #4cc
+				// display: block
+				width: calc((100% - 10px) / 2)
+				// height: 50%
+				// overflow: hidden
+				float: left
+				// padding: 20px 5px
+				// margin: 0 5px 20px
+				margin: 0px 5px 20px 0px
+				// padding: 5px
+				box-sizing: border-box
+				cursor: pointer
+				&:hover
+					img
+						transform: translateY(-2px)
+						box-shadow: 0px 5px 10px rgba(0,0,0,0.2)
+					h3
+						border-bottom: 1px solid #000
+						color: #000
+				&:nth-of-type(even)
+					// background: #000
+					margin: 0px 0px 20px 5px
+				img
+					width: 100%
+					transition: .3s
+					// height: 300px
+					object-fit: cover
+					display: block
+					border-radius: 3px
+				h3
+					font-size: 1.2em
+					font-family: $serif
+					font-weight: $bold
+					border-bottom: 1px solid transparent
+					color: #222
+					transition: .3s
+					margin-bottom: 2px
+					display: inline-block
+					&:nth-of-type(2)
+						// background: #4cc
+						// width: auto
+						display: block
+						float: right
+						border: none !important
+				h5
+					font-size: 0.9em
+					font-family: $sans
+					font-weight: 300
+				button
+					line-height: 30px
+					border: 1px solid $greyline
+					border-radius: 3px
+					display: block
+					width: 200px
+					background: none
+					margin: 10px auto 0
+					cursor: pointer
+					transition: .3s
+					font-family: $sans
+					font-size: 1em
+					font-weight: $thin
+					color: $black
+					outline: none
+					&:hover
+						border: 1px solid #000
+						color: #000
+			.loadMore
+				clear: both
+				margin: 20px 0 40px
+				display: inline-block
+				width: 100%
+				input
+					transition: .3s
+					display: block
+					font-size: 1em
+					border: none
+					border-bottom: 1px solid #ccc
+					font-family: $sans
+					color: $grey
+					font-weight: 300
+					text-transform: uppercase
+					text-align: center
+					width: 200px
+					margin: auto
+					background: none
+					cursor: pointer
+					outline: none
+					border-radius: 0px
+					&:hover
+						border-bottom: 1px solid #000
+						color: #000

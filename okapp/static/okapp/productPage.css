@@ -1,0 +1,330 @@
+.toLeft, .toRight {
+  position: absolute;
+  width: 50px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #222;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); }
+
+.showDropdown {
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  opacity: 1 !important;
+  transform: translateY(0) !important; }
+
+.showNavigation {
+  opacity: 1;
+  transform: translateY(0) !important; }
+
+.showSpan {
+  opacity: 1 !important; }
+
+.highlightItem {
+  color: #000 !important; }
+
+.goSticky {
+  position: fixed;
+  top: -70px;
+  opacity: 0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent; }
+
+a {
+  color: #444;
+  text-decoration: none; }
+
+.rotateMenu {
+  transform: rotateZ(90deg); }
+
+@media screen and (min-width: 768.5px) {
+  main {
+    padding: 130px 0 30px !important;
+    background: #f5f5f5; }
+    main section {
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 50px; }
+      main section img {
+        width: calc(60% - 10px);
+        margin-right: 10px;
+        float: left;
+        display: block;
+        border-radius: 3px; }
+      main section aside {
+        overflow: hidden; }
+        main section aside h1 {
+          font-size: 1.5em;
+          font-family: "Playfair Display", serif;
+          color: #444;
+          font-weight: 700;
+          display: inline-block;
+          line-height: 35px; }
+        main section aside a {
+          font-size: 0.9em;
+          line-height: 20px;
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          color: #444;
+          display: block; }
+        main section aside h5 {
+          font-size: 1em;
+          line-height: 20px;
+          color: #444;
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          margin: 10px 0; }
+          main section aside h5 span {
+            color: #000;
+            font-weight: 300;
+            border-bottom: 1px solid #000; }
+        main section aside p {
+          font-size: 1em;
+          padding-right: 10px;
+          overflow-y: scroll;
+          font-weight: 300;
+          margin-bottom: 20px;
+          height: 50px;
+          color: #444;
+          font-family: "Playfair Display", serif; }
+          main section aside p:first-of-type {
+            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd; }
+          main section aside p::-webkit-scrollbar {
+            width: 3px;
+            background: transparent; }
+          main section aside p::-webkit-scrollbar-thumb {
+            background: #ddd; }
+          main section aside p:hover::-webkit-scrollbar-thumb {
+            background: #444; }
+          main section aside p.aboutShipping {
+            font-family: "Roboto", sans-serif;
+            font-weight: 300;
+            color: #444;
+            margin-bottom: 20px; }
+            main section aside p.aboutShipping a {
+              display: inline;
+              font-size: 1em;
+              color: #000;
+              text-decoration: underline; }
+      main section form {
+        overflow: hidden;
+        bottom: 0;
+        right: 0;
+        width: 100%; }
+        main section form input {
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          line-height: 30px;
+          outline: none;
+          font-size: 1em;
+          font-weight: 300;
+          text-align: center;
+          display: block;
+          border: 1px solid transparent;
+          border: 1px solid #aaa;
+          width: 50%;
+          cursor: pointer;
+          margin: auto;
+          border-radius: 3px;
+          transition: .3s;
+          background: none; }
+          main section form input:hover {
+            border-radius: 3px;
+            color: #000;
+            border: 1px solid #000; }
+    main .interestingProductsHeader {
+      font-size: 1.5em;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 300;
+      color: #222;
+      font-family: "Playfair Display", serif; }
+    main .slider {
+      position: relative;
+      height: 330px;
+      overflow: hidden;
+      margin: 0 auto;
+      width: calc(100% - 50px); }
+      main .slider a {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-size: 1.5em;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+        width: 70px;
+        left: 0px;
+        height: 100%; }
+        main .slider a:nth-of-type(2) {
+          background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+          right: 0px;
+          left: auto; }
+      main .slider .sliderForm {
+        height: calc(100% - 30px);
+        border-radius: 3px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: calc((100% - 20px) / 3);
+        display: block;
+        position: absolute;
+        transition: 0.3s;
+        top: 0;
+        left: 0;
+        cursor: pointer; }
+        main .slider .sliderForm:hover h2 {
+          color: #000;
+          border-bottom: 1px solid #000; }
+        main .slider .sliderForm h2 {
+          bottom: -30px;
+          line-height: 30px;
+          display: block;
+          position: absolute;
+          font-size: 1.2em;
+          font-family: "Playfair Display", serif;
+          color: #222;
+          transition: .3s;
+          border-bottom: 1px solid transparent; } }
+
+@media screen and (max-width: 768.5px) {
+  .container {
+    position: relative; }
+  .toLeft, .toRight {
+    width: 40px;
+    bottom: 115px;
+    background: rgba(255, 255, 255, 0.8); }
+  main {
+    padding: 60px 0 0 0 !important;
+    overflow-x: hidden;
+    background: #fafafa; }
+    main section {
+      overflow: hidden;
+      position: relative; }
+      main section img {
+        width: 100%;
+        margin-right: 10px;
+        display: block;
+        border-radius: 3px; }
+      main section aside {
+        overflow: hidden; }
+        main section aside h1 {
+          font-size: 1.5em;
+          font-family: "Playfair Display", serif;
+          color: #444;
+          font-weight: 700;
+          display: inline-block; }
+        main section aside a {
+          font-size: 0.9em;
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          color: #444;
+          display: block; }
+        main section aside h5 {
+          font-size: 1em;
+          color: #444;
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          margin: 10px 0; }
+          main section aside h5 span {
+            color: #000;
+            font-weight: 300;
+            border-bottom: 1px solid #000; }
+        main section aside p {
+          font-size: 1em;
+          padding-right: 10px;
+          overflow-y: scroll;
+          font-weight: 300;
+          color: #444;
+          min-height: 50px;
+          font-family: "Playfair Display", serif; }
+          main section aside p:first-of-type {
+            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd; }
+          main section aside p::-webkit-scrollbar {
+            width: 3px;
+            background: transparent; }
+          main section aside p::-webkit-scrollbar-thumb {
+            background: #ddd; }
+          main section aside p:hover::-webkit-scrollbar-thumb {
+            background: #444; }
+          main section aside p.aboutShipping {
+            font-family: "Roboto", sans-serif;
+            font-weight: 300;
+            color: #444;
+            margin-bottom: 20px; }
+            main section aside p.aboutShipping a {
+              display: inline;
+              font-size: 1em;
+              color: #000;
+              text-decoration: underline; }
+      main section form {
+        overflow: hidden;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        margin: 10px 0 50px; }
+        main section form input {
+          line-height: 30px;
+          outline: none;
+          font-size: 1em;
+          font-weight: 300;
+          text-align: center;
+          display: block;
+          border: 1px solid transparent;
+          border: 1px solid #aaa;
+          width: 50%;
+          cursor: pointer;
+          margin: auto;
+          border-radius: 3px;
+          transition: .3s;
+          background: none; }
+          main section form input:hover {
+            border-radius: 3px;
+            border: 1px solid #000; }
+    main .interestingProductsHeader {
+      font-size: 1.5em;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 300;
+      color: #222;
+      font-family: "Playfair Display", serif; }
+    main .slider {
+      position: relative;
+      height: 330px;
+      overflow: hidden;
+      margin-bottom: 30px; }
+      main .slider .sliderForm {
+        height: calc(100% - 30px);
+        border-radius: 3px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: calc((100% - 40px));
+        display: block;
+        position: absolute;
+        transition: 0.3s;
+        top: 0;
+        left: 0;
+        cursor: pointer; }
+        main .slider .sliderForm:hover h2 {
+          color: #000;
+          border-bottom: 1px solid #000; }
+        main .slider .sliderForm h2 {
+          bottom: -30px;
+          line-height: 30px;
+          display: block;
+          position: absolute;
+          font-size: 1.2em;
+          font-family: "Playfair Display", serif;
+          color: #444;
+          transition: .3s;
+          border-bottom: 1px solid transparent; } }

@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Страница администрирования</title>
+  <link rel="stylesheet" href="{% static 'okapp/adminPage.css' %}">
+  <link rel="icon" sizes="64x64" href="{% static 'okapp/img/favicon.png' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:300,400,700&display=swap&subset=cyrillic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <h1 id="hey">Администрирование</h1>
+      <a href="/logout/" class="logout">Выйти</a>
+      <form action="" method="post" id="addProduct_form" class="addProduct" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Добавить товар</h2>
+        <input class="name cleanOnSubmit" id="productName" required type="text" placeholder="Название">
+        <div class="photo">
+          <i class="material-icons-outlined">add_photo_alternate</i>
+          <input name="image" class="cleanOnSubmit" id="src" type="file" title="Добавить фото">
+        </div>
+        <img src="#/" id="target">
+        <div class="categories">
+          <h3>Выбрать категорию:</h3>
+          <nav class="categories_nav">
+            {% for category in categories %}
+            <div class="category">
+              <input type="checkbox" class="categories_checkbox addProduct_category" data-categoryparent="{{ category.parent }}" data-value="{{ category.category }}" value="{{ category.category }}">
+              <h5 class="category__button">{{ category.category }}</h5>
+            </div>
+            {% endfor %}
+          </nav>
+        </div>
+        <input type="text" class="amount cleanOnSubmit" id="price" placeholder="Цена">
+        <input type="text" class="amount cleanOnSubmit" id="amount" placeholder="Количество на складе">
+        <textarea name="text" id="description" class="cleanOnSubmit" cols="30" rows="5" placeholder="Описание товара"></textarea>
+        <input class="submit" type="submit" value="Добавить товар">
+      </form>
+      <div class="addCategory">
+        <h2>Добавить категорию</h2>
+        <p id="addCategory_array" style="display: none;">{{ addCategory_array }}</p>
+        <ul id="addCategory_list">
+        </ul>
+      </div>
+      <div class="products">
+        <h2>Товары магазина</h2>
+        <div class="categories">
+          <h3>Сортировать по категориям:</h3>
+          <nav action="" method="post" enctype="multipart/form-data" class="categories_nav">
+            {% for category in categories %}
+            <div class="category">
+              <input type="checkbox" class="categories_checkbox sortProducts_button" data-value="{{ category.category }}" value="{{ category.category }}">
+              <h5 class="category__button">{{ category.category }}</h5>
+            </div>
+            {% endfor %}
+          </nav>
+        </div>
+        <div class="product_container">
+          {% for product in products %}
+          <form action="" class="product" enctype="multipart/form-data">
+            {% csrf_token %}
+            <img src="{{ product.photo.url }}" alt="">
+            <h3>{{ product.name }}</h3>
+            <h3>{{ product.price }} руб.</h3>
+            <h5 class="productCategory">{{ product.category }}</h5>
+            <button class="product_remove" data-productdata="{{ product.id }}">Удалить</button>
+          </form>
+          {% endfor %}          
+        </div>
+        <form action="" type="post" id="loadMore" class="loadMore">
+            {% csrf_token %}
+            <input type="submit" value="Загрузить ещё">
+        </form>
+      </div>
+    </div>
+  </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      var token = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'okapp/adminPage.js' %}"></script>
+</body>
+
+</html>

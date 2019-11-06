@@ -1,0 +1,203 @@
+.about {
+  text-align: left; }
+
+.orderButton {
+  font-size: 1.2em;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+  color: #444;
+  font-weight: 300;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #d5d5d5;
+  transition: .3s;
+  width: 200px;
+  background: #fff;
+  cursor: pointer;
+  margin: 50px auto 0;
+  display: block;
+  outline: none;
+  padding: 5px;
+  box-sizing: border-box; }
+  .orderButton:hover {
+    border-bottom: 1px solid #000;
+    color: #000; }
+
+main {
+  padding: 100px 0; }
+  main a {
+    color: #444;
+    border-bottom: 1px solid #ccc;
+    transition: .3s; }
+    main a:hover {
+      border-bottom: 1px solid #000 !important;
+      color: #000; }
+  main h1 {
+    font-size: 1.5em;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    color: #444;
+    font-weight: 400;
+    margin: 30px 0; }
+  main h2 {
+    font-size: 1.2em;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    color: #444;
+    font-weight: 300;
+    margin: 50px 0 20px; }
+  main h4 {
+    font-size: 1em;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    color: #444;
+    font-weight: 300; }
+  main .order__table {
+    overflow: hidden; }
+    main .order__table li {
+      list-style: none; }
+    main .order__table .order__table__header {
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); }
+      main .order__table .order__table__header:last-of-type {
+        margin-top: 50px; }
+      main .order__table .order__table__header h4 {
+        width: calc((100% - 130px) / 3);
+        float: left;
+        color: #444;
+        line-height: 30px; }
+        main .order__table .order__table__header h4:nth-child(2) {
+          width: 100px; }
+      main .order__table .order__table__header #orderSum {
+        width: calc((100% - 130px) / 3);
+        margin-left: calc(((100% - 130px) / 3) + 100px); }
+    main .order__table .order__table__item {
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px solid #d5d5d5;
+      padding: 10px 0; }
+      main .order__table .order__table__item h4 {
+        width: calc((100% - 130px) / 3);
+        float: left;
+        line-height: 30px; }
+        main .order__table .order__table__item h4 a {
+          border-bottom: 1px solid transparent; }
+      main .order__table .order__table__item .numberContainer {
+        position: relative;
+        float: left; }
+        main .order__table .order__table__item .numberContainer .arrow {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 30px;
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          background: #fff;
+          cursor: pointer;
+          height: 100%;
+          border: 1px solid #d5d5d5;
+          box-sizing: border-box;
+          border-radius: 3px 0px 0px 3px; }
+        main .order__table .order__table__item .numberContainer .more {
+          left: inherit;
+          right: 0;
+          border-radius: 0px 3px 3px 0px; }
+        main .order__table .order__table__item .numberContainer input {
+          width: 100px;
+          float: left;
+          line-height: 30px;
+          box-sizing: border-box;
+          height: 30px;
+          border-radius: 3px;
+          border: 1px solid #d5d5d5;
+          padding: 0 30px;
+          outline: none;
+          font-size: 1em;
+          font-family: "Roboto", sans-serif;
+          text-align: center;
+          color: #444;
+          font-weight: 300; }
+          main .order__table .order__table__item .numberContainer input::-webkit-outer-spin-button, main .order__table .order__table__item .numberContainer input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0; }
+      main .order__table .order__table__item button {
+        width: 30px;
+        height: 30px;
+        display: block;
+        float: left;
+        border: transparent;
+        background: #fff;
+        color: #444;
+        border-radius: 50%;
+        cursor: pointer;
+        outline: none;
+        transition: .3s; }
+        main .order__table .order__table__item button:hover {
+          color: #000;
+          background: #f5f5f5;
+          border: 1px solid #d5d5d5; }
+  main .contacts {
+    max-width: 400px;
+    width: 90%;
+    margin: 0 auto 10px;
+    clear: both;
+    overflow: hidden; }
+    main .contacts.shipping {
+      margin-top: 40px; }
+      main .contacts.shipping h4 {
+        width: 100%; }
+      main .contacts.shipping input {
+        width: 100%;
+        display: block;
+        margin: auto; }
+    main .contacts h4 {
+      width: 150px;
+      line-height: 30px;
+      float: left; }
+    main .contacts input {
+      width: calc(100% - 150px);
+      box-sizing: border-box;
+      float: left;
+      line-height: 30px;
+      height: 30px;
+      border-radius: 3px;
+      border: 1px solid #d5d5d5;
+      padding: 0 5px;
+      outline: none;
+      font-size: 1em;
+      font-family: "Roboto", sans-serif;
+      color: #444;
+      font-weight: 300; }
+
+@media screen and (max-width: 768.5px) {
+  .order__table__header:first-of-type {
+    display: none; }
+  main {
+    padding: 50px 0; }
+    main .order__table .order__table__header {
+      box-shadow: none; }
+      main .order__table .order__table__header:last-of-type {
+        margin-top: 10px; }
+      main .order__table .order__table__header h4 {
+        width: 50% !important;
+        margin: 0 !important; }
+    main .order__table .order__table__item .productName {
+      width: calc(100% - 30px);
+      float: left;
+      margin-bottom: 10px; }
+    main .order__table .order__table__item button {
+      float: inherit; }
+    main .order__table .order__table__item h4 {
+      width: calc(100% - 100px);
+      text-align: left; }
+    main .order__table .order__table__item .numberContainer {
+      float: right; }
+    main .contacts.shipping h4 {
+      line-height: 30px; }
+    main .contacts h4 {
+      line-height: 40px; }
+    main .contacts input {
+      line-height: 40px;
+      height: 40px; } }

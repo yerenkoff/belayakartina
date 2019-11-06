@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Корзина | БЕЛАЯ КАРТИНА</title>
+    <link rel="stylesheet" href="{% static 'okapp/order.css' %}">
+    <link rel="stylesheet" href="{% static 'okapp/common.css' %}">
+    <link rel="icon" sizes="64x64" href="{% static 'okapp/img/favicon.png' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:300,400,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
+    rel="stylesheet">
+</head>
+<body>
+    <div id="notification">Ваш заказ принят. Спасибо!</div>
+    <header>
+        <div class="container">
+            <a href="#/" class="hamburger" onclick="toggleNav(this)"><img src="{% static 'okapp/img/menu.svg' %}" alt=""></a>
+            <a href="/" class="logo">
+                <h2>БЕЛАЯ КАРТИНА</h2>
+                <p>Товары для дома и рукоделия</p>
+            </a>
+            <div class="mobile__bag">
+                <a href="#/" class="basket" onclick="toggleDrop(this)"><img src="{% static 'okapp/img/basket3.svg' %}" alt=""><span></span><div class="basketCounter"></div></a>
+                <div class="bag">
+                    <h3 class="bag__name">Ваша корзина</h3>
+                    <div class="bag__items">
+                    </div>
+                    <a href="#/" class="bag__item">
+                        <h5>Подытог</h5>
+                        <div class="bag__price total_price"></div>
+                    </a href="#/">
+                    <a href="/order" class="bag__link">Перейти в корзину</a>
+                </div>
+            </div>
+            <nav class="navigationBar">
+                {% for item in items %}
+                <section>
+                    <div class="item" onclick="toggleDrop(this)">{{ item.category }}<span></span></div>
+                    <div class="section__nav">
+                        <a href="{% url 'feed' item.category 'Все товары' %}" class="product">Все товары</a>
+                        {% for product in categories %}
+                        {% if product.parent == item.category %}
+                        <a href="{% url 'feed' item.category product.category %}" class="product">{{ product.category }}</a>
+                        <div class="product__nav" data-product-nav="drop">
+                            {% for subproduct in categories %}
+                            {% if subproduct.parent == product.category %}
+                            <a href="{% url 'feed' item.category subproduct.category %}" class="subProduct">{{ subproduct.category }}</a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
+                <section class="tools searchSection">
+                    <a href="#/" class="searchIcon" onclick="toggleDrop(this)"><img src="{% static 'okapp/img/search.svg' %}" alt=""><img style="opacity: 0;" src="{% static 'okapp/img/close.svg' %}" alt=""><span></span></a>
+                    <form action="" type="post" class="modalSearch searchForm">
+                        <input class="searchForm_input modalSearch" type="text" placeholder="Введите название товара">
+                        <button id="doSearch" class="modalSearch" onclick="console.log('CLicked');">
+                            <a href="#/" class="modalSearch_button"><img src="{% static 'okapp/img/search.svg' %}" alt=""></a>
+                        </button>
+                        <div class="tools_answers">
+                            <!-- <button type="submit" class="answers_input">"Весенний сад"<span> - Вышивка, Panna</span></button> -->
+                        </div>
+                    </form>
+                </section>
+                <section class="tools desktop__bag">
+                    <a href="#/" class="basket" onclick="toggleDrop(this)"><img src="{% static 'okapp/img/basket3.svg' %}" alt=""><span></span><div class="basketCounter"></div></a>
+                    <div class="bag">
+                        <h3 class="bag__name">Ваша корзина</h3>
+                        <div class="bag__items">
+                        </div>
+                        <a href="#/" class="bag__item">
+                            <h5>Подытог</h5>
+                            <div class="bag__price total_price"></div>
+                        </a href="#/">
+                        <a href="/order" class="bag__link">Перейти в корзину</a>
+                    </div>
+                </section>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Ваша корзина</h1>
+            <ul class="order__table">
+                <li class="order__table__header">
+                    <h4>Наименование</h4>
+                    <h4>Количество</h4>
+                    <h4>Цена</h4>
+                    <h4>Стоимость</h4>
+                </li>
+                {% for product in bagProducts %}
+                <li class="order__table__item">
+                    <h4 class="productName"><a href="#/">{{ product.1 }}</a></h4>
+                    <div class="numberContainer">
+                    <div class="less arrow" onclick="this.nextElementSibling.stepDown(); orderNumber(this.nextElementSibling);">-</div>
+                    <input min="1" max="{{ product.4 }}" type="number" data-productid="{{ product.0 }}" class="orderNumber" value="{{ product.3 }}" onkeyup="orderNumber(this);">
+                    <div class="more arrow" onclick="this.previousElementSibling.stepUp(); orderNumber(this.previousElementSibling);">+</div>
+                    </div>
+                    <h4><span class="priceLabel">Цена:</span><span>{{ product.2 }} руб.</span></h4>
+                    <h4 class="cost"></h4>
+                    <button onclick="orderNumber(this);" value="{{ product.0 }}">✕</button>
+                </li>
+                {% endfor %}
+                <li class="order__table__header">
+                    <h4 id="orderSumHeader">Итог</h4>
+                    <h4 id="orderSum"></h4>
+                </li>
+            </ul>
+            <h2>Пожалуйста, оставьте свои контактные данные для подтверждения заказа</h2>
+            <div class="contacts">
+                <h4>Номер телефона</h4>
+                <input id="phone" type="tel">
+            </div>
+            <div class="contacts">
+                <h4>E-mail</h4>
+                <input id="email" type="email">
+            </div>
+            <div class="contacts shipping">
+                <h4 id="shipping"></h4>
+                <input id="shippingInput" onkeyup="countCost()" type="email" placeholder="Введите адрес в Челябинске">
+            </div>
+            <h2>Мы находимся по адресу: г. Челябинск, ул. Молодогвардейцев, 53 - ТК Карнавал</h2>
+<!--             <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1b7b51284e608a4327d9f6f6c809545849ddcc889ab6d2f50d223a3ade7d1e20&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+ -->            <h2 class="about">Узнать подробнее о <a href="#/">Доставке</a>.</h2>
+            <h4 class="about">В случае возникновения вопросов, связанных с использованием сайта, Вы можете посетить раздел <a href="#/">Помощь</a> или обратиться в <a href="#/">Службу Поддержки</a>.</h4>
+            <button class="orderButton" onclick="makeOrder()">Оформить заказ</button>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="social">
+                <a href="#/"><img src="{% static 'okapp/img/ig.png' %}" title="Instagram" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/tg.png' %}" title="Telegram" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/vb.png' %}" title="Viber" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/vk.png' %}" title="VK" alt=""></a>
+                <a href="#/"><img src="{% static 'okapp/img/wa.png' %}" title="WhatsApp" alt=""></a>
+            </div>
+            <div class="contacts">
+                <a href="tel:8 905 831 40 67" title="Позвонить">
+                    <img src="{% static 'okapp/img/phone.png' %}" alt="">
+                    <h5>8 905 831 40 67</h5>
+                </a>
+                <a href="mailto:belayakartina@yandex.com" title="Написать">
+                    <img src="{% static 'okapp/img/email.svg' %}" alt="">
+                    <h5>belayakartina@yandex.com</h5>
+                </a>
+            </div>
+            <a href="/" class="logo">БЕЛАЯ КАРТИНА</a>
+            <section>
+                <a href="#/">Доставка</a>
+                <a href="#/">Помощь</a>
+            </section>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      var token = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'okapp/script.js' %}"></script>
+    <script src="{% static 'okapp/order.js' %}"></script>
+    <!-- <script src="{% static 'okapp/feed.js' %}"></script> -->
+    <script>
+        addToBag({{ bagProducts|safe }});
+        let orderData = {{ bagProducts|safe }};
+    </script>
+</body>
+</html>

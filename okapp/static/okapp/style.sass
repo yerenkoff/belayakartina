@@ -1,0 +1,395 @@
+$serif: 'Playfair Display', serif
+$sans: 'Roboto', sans-serif
+$grey: #444
+$product-border: #000
+
+@media (min-width: 768.5px)
+	main
+		padding: 100px 0 0 0
+		font-family: $serif
+		font-weight: 300
+		color: $grey
+		background: #f5f5f5
+		// background: #44c
+		.container
+			h1
+				line-height: 100px
+				color: #555
+				text-align: center
+				font-size: 1em
+				font-weight: 400
+				position: relative
+			.showcase
+				height: 300px
+				padding-top: 10px
+				position: relative
+				border-radius: 3px
+				background-color: #fff
+				background-image: url("img/showcase.jpg")
+				background-repeat: no-repeat
+				background-position: center
+				// background: #000
+				.showcase__header
+					// line-height: 100px
+					margin-bottom: 10px
+					font-size: 3em
+					font-weight: 700
+					color: #fff
+					font-family: $serif
+					text-align: left
+					padding: 0 50px
+					text-shadow: 0px 5px 10px #000
+				p
+					font-family: $sans
+					color: #fff
+					font-weight: 300
+					text-align: right
+					float: right
+					padding: 20px 20px 20px 50%
+					background: linear-gradient(to right, transparent, rgba(0,0,0,0.8))
+				.showcase__buttons
+					background: #fff
+					border-radius: 3px
+					font-family: $sans
+					text-transform: uppercase
+					font-size: 0.8em
+					font-weight: 400
+					// padding-left: 10px
+					box-shadow: 0px 0px 5px rgba(0,0,0,0.3)
+					overflow: hidden
+					position: absolute
+					bottom: -20px
+					transition: .8s
+					right: 5px
+					a
+						line-height: 30px
+						// border-radius: 3px
+						color: #000
+						// background: #4cc
+
+						text-align: center
+						float: right
+						width: 300px
+						display: block
+						margin: 5px
+						transition: .3s
+						border-bottom: 1px solid transparent
+						// box-sizing: border-box
+						&:hover
+							border-bottom: 1px solid #000
+			.column
+				width: calc((100% - 30px) / 4)
+				margin: 50px 5px 30px
+				float: left
+				height: 200px
+				border-radius: 3px
+				transition: .3s
+				background-size: cover
+				background-repeat: no-repeat
+				background-position: center
+				position: relative
+				&:hover
+					transform: translateY(-2px)
+					box-shadow: 0px 0px 10px rgba(0,0,0,0.4)
+					h3
+						box-shadow: 0px 0px 10px rgba(0,0,0,0.4) !important
+						color: #000
+				&:first-of-type
+					margin-left: 0
+				&:last-of-type
+					margin-right: 0
+				h3
+					font-size: 1.2em
+					transition: .3s
+					border-radius: 3px
+					font-family: $serif
+					color: #222
+					// font-weight: 400
+					background: #fff
+					position: absolute
+					bottom: -15px
+					line-height: 30px
+					padding: 0 10px
+					left: 10px
+					box-shadow: 0px 0px 5px rgba(0,0,0,0.3)
+
+			.lastProductsHeader
+				// line-height: 70px
+				font-size: 1.5em
+				display: inline-block
+				width: 100%
+				// line-height: 70px
+				margin-bottom: 20px
+				// margin-top: 20px
+				padding-top: 20px
+				font-weight: 300
+				color: #222
+				font-family: $serif
+				text-align: center
+			.main__product
+				// background: #4cc
+				// display: block
+				width: calc((100% - 10px) / 2)
+				// height: 50%
+				// overflow: hidden
+				float: left
+				// padding: 20px 5px
+				// margin: 0 5px 20px
+				margin: 0px 5px 20px 0px
+				// padding: 5px
+				box-sizing: border-box
+				cursor: pointer
+				&:hover
+					img
+						transform: translateY(-2px)
+						box-shadow: 0px 5px 10px rgba(0,0,0,0.2)
+					h2
+						border-bottom: 1px solid #000
+						color: #000
+				&:nth-of-type(even)
+					// background: #000
+					margin: 0px 0px 20px 5px
+				img
+					width: 100%
+					transition: .3s
+					// height: 300px
+					object-fit: cover
+					display: block
+					border-radius: 3px
+				h2
+					font-size: 1.2em
+					font-family: $serif
+					border-bottom: 1px solid transparent
+					color: #222
+					transition: .3s
+					margin-bottom: 2px
+					display: inline-block
+					&:nth-of-type(2)
+						display: block
+						float: right
+						border: none !important
+				h5
+					font-size: 0.9em
+					font-family: $sans
+					font-weight: 300
+			.loadMore
+				clear: both
+				margin: 20px 0 40px
+				display: inline-block
+				width: 100%
+				input
+					transition: .3s
+					display: block
+					font-size: 1em
+					border: none
+					border-bottom: 1px solid #ccc
+					font-family: $sans
+					color: $grey
+					font-weight: 300
+					text-transform: uppercase
+					text-align: center
+					width: 200px
+					margin: auto
+					background: none
+					cursor: pointer
+					outline: none
+					border-radius: 0px
+					&:hover
+						border-bottom: 1px solid #000
+						color: #000
+@media (max-width: 768.5px)
+	main
+		padding: 50px 0 0 0
+		overflow-x: hidden
+		background: #fafafa
+		// background: #44c
+		.container
+			h1
+				font-family: $serif
+				font-weight: 300
+				color: $grey
+				line-height: 22px
+				margin: 24px 0
+				text-align: center
+				font-size: 1em
+				position: relative
+			.showcase
+				height: 300px
+				padding-top: 10px
+				position: relative
+				border-radius: 3px
+				background-color: #fff
+				background-image: url("img/showcase.jpg")
+				background-repeat: no-repeat
+				background-position: center
+				margin-bottom: 70px
+				// background: #000
+				.showcase__header
+					// line-height: 100px
+					margin-bottom: 10px
+					font-size: 2em
+					font-weight: 700
+					color: #fff
+					font-family: $serif
+					text-align: left
+					padding: 0 10px
+					text-shadow: 0px 5px 10px #000
+				p
+					font-family: $sans
+					color: #fff
+					font-weight: 300
+					text-align: right
+					float: right
+					padding: 10px 10px 10px 50px
+					background: linear-gradient(to right, transparent, rgba(0,0,0,0.8))
+				.showcase__buttons
+					background: #fff
+					border-radius: 3px
+					font-family: $sans
+					text-transform: uppercase
+					font-size: 0.8em
+					font-weight: 300
+					// padding-left: 10px
+					box-shadow: 0px 0px 5px rgba(0,0,0,0.3)
+					overflow: hidden
+					position: absolute
+					bottom: -37.5px
+					transition: .8s
+					right: calc((100% - 260px) / 2)
+					// overflow: hidden
+					a
+						line-height: 30px
+						// border-radius: 3px
+						color: #000
+						// background: #4cc
+
+						text-align: center
+						// float: right
+						width: 250px
+						max-width: 300px
+						// margin: auto
+						display: block
+						margin: 5px
+						transition: .3s
+						border-bottom: 1px solid #f5f5f5
+						// box-sizing: border-box
+						&:hover
+							border-bottom: 1px solid #000
+			.column
+				width: calc((100% - 10px) / 2)
+				// margin: 50px 5px
+				margin-bottom: 30px
+				float: left
+				height: 200px
+				border-radius: 3px
+				transition: .3s
+				background-size: cover
+				background-repeat: no-repeat
+				background-position: center
+				position: relative
+				&:nth-of-type(even)
+					float: right
+				&:hover
+					transform: translateY(-2px)
+					box-shadow: 0px 0px 10px rgba(0,0,0,0.4)
+					h3
+						box-shadow: 0px 0px 10px rgba(0,0,0,0.4) !important
+						color: #000
+				h3
+					font-size: 1.2em
+					transition: .3s
+					border-radius: 3px
+					font-family: $serif
+					color: #222
+					// font-weight: 400
+					background: #fff
+					position: absolute
+					text-align: center
+					width: 90%
+					bottom: -12px
+					line-height: 24px
+					padding: 5px 10px
+					box-sizing: border-box
+					left: 5%
+					box-shadow: 0px 0px 5px rgba(0,0,0,0.3)
+
+			.lastProductsHeader
+				// line-height: 70px
+				font-size: 1.5em
+				display: inline-block
+				width: 100%
+				// line-height: 70px
+				margin-bottom: 20px
+				margin-top: 20px
+				font-weight: 300
+				color: #222
+				font-family: $serif
+				text-align: center
+			.main__product
+				// background: #4cc
+				// display: block
+				width: calc(100%)
+				// height: 50%
+				// overflow: hidden
+				float: left
+				// padding: 20px 5px
+				// margin: 0 5px 20px
+				// margin: 0px 5px 20px 0px
+				margin-bottom: 20px
+				// padding: 5px
+				box-sizing: border-box
+				cursor: pointer
+				&:hover
+					img
+						transform: translateY(-2px)
+						box-shadow: 0px 5px 10px rgba(0,0,0,0.2)
+					h2
+						border-bottom: 1px solid #000
+						color: #000
+				img
+					width: 100%
+					transition: .3s
+					// height: 300px
+					object-fit: cover
+					display: block
+					border-radius: 3px
+				h2
+					font-size: 1.2em
+					font-family: $serif
+					border-bottom: 1px solid transparent
+					color: #222
+					transition: .3s
+					margin-bottom: 2px
+					display: inline-block
+					&:nth-of-type(2)
+						display: block
+						float: right
+						border: none !important
+				h5
+					font-size: 0.9em
+					font-family: $sans
+					font-weight: 300
+			.loadMore
+				clear: both
+				margin: 20px 0 40px
+				display: inline-block
+				width: 100%
+				input
+					transition: .3s
+					outline: none
+					display: block
+					font-size: 1em
+					border: none
+					border-bottom: 1px solid #ccc
+					font-family: $sans
+					color: $grey
+					font-weight: 300
+					text-transform: uppercase
+					text-align: center
+					width: 200px
+					margin: auto
+					background: none
+					cursor: pointer
+					&:hover
+						border-bottom: 1px solid #000
+						color: #000
